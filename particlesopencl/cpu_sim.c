@@ -16,9 +16,9 @@ static void simulate_cpu(Particle *p, int count, int steps, float dt, float grav
     for (int s = 0; s < steps; s++) {
         for (int i = 0; i < count; i++) {
             p[i].vy += gravity * dt;
-            p[i].x  += p[i].vx * dt;
-            p[i].y  += p[i].vy * dt;
-            p[i].z  += p[i].vz * dt;
+            p[i].x += p[i].vx * dt;
+            p[i].y += p[i].vy * dt;
+            p[i].z += p[i].vz * dt;
         }
     }
 }
