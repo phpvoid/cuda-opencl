@@ -41,15 +41,15 @@ int main(void) {
 
     printf("=== Particle Simulator (CPU) ===\n");
     printf("Particle Count: %d\n", NUM_PARTICLES);
-    printf("Steps         : %d\n", NUM_STEPS);
+    printf("Steps: %d\n", NUM_STEPS);
 
     clock_t start = clock();
     simulate_cpu(particles, NUM_PARTICLES, NUM_STEPS, DT, GRAVITY);
     clock_t end = clock();
 
     double elapsed = (double)(end - start) / CLOCKS_PER_SEC;
-    printf("CPU time      : %.4f seconds\n", elapsed);
-    printf("Particles/sec : %.0f\n", (NUM_PARTICLES * NUM_STEPS) / elapsed);
+    printf("CPU time: %.4f seconds\n", elapsed);
+    printf("Particles/sec: %.0f\n", (NUM_PARTICLES * NUM_STEPS) / elapsed);
 
     printf("\n Sample particles \n");
     for (int i = 0; i < 5; i++) {
