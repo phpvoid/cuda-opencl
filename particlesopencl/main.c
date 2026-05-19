@@ -64,11 +64,11 @@ static void print_header(cl_device_id device) {
     cl.GetDeviceInfo(device, CL_DRIVER_VERSION, sizeof(driver), driver, NULL);
     cl.GetDeviceInfo(device, CL_DEVICE_MAX_COMPUTE_UNITS, sizeof(cu), &cu, NULL);
     cl.GetDeviceInfo(device, CL_DEVICE_GLOBAL_MEM_SIZE, sizeof(mem), &mem, NULL);
-    printf("Device       : %s\n", name);
-    printf("Vendor       : %s\n", vendor);
-    printf("Driver       : %s\n", driver);
+    printf("Device: %s\n", name);
+    printf("Vendor: %s\n", vendor);
+    printf("Driver: %s\n", driver);
     printf("Compute Units: %u\n", cu);
-    printf("Global Mem   : %llu MB\n", (unsigned long long)(mem / (1024*1024)));
+    printf("Global Mem: %llu MB\n", (unsigned long long)(mem / (1024*1024)));
     ocl_close(&cl);
 }
 
@@ -79,7 +79,7 @@ int main(void) {
 
     printf("=== Particle Simulator (CPU vs GPU Comparison) ===\n");
     printf("Particle Count: %d\n", NUM_PARTICLES);
-    printf("Sim Steps     : %d\n\n", NUM_STEPS);
+    printf("Sim Steps: %d\n\n", NUM_STEPS);
 
     err = ocl_init(&cl);
     if (err != CL_SUCCESS) {
@@ -104,7 +104,7 @@ int main(void) {
 
     print_header(device);
 
-    /*  CPU run  */
+    //CPU run
     Particle *cpu_p = malloc(buf_sz);
     srand(0);
     init_particles(cpu_p, NUM_PARTICLES);
@@ -114,7 +114,7 @@ int main(void) {
     printf("CPU time      : %.4f sec\n", cpu_time);
     printf("Particles/sec : %.0f\n", (NUM_PARTICLES * NUM_STEPS) / cpu_time);
 
-    /*  GPU run (OpenCL)  */
+    //GPU run (OpenCL) 
     Particle *gpu_p = malloc(buf_sz);
     srand(0);
     init_particles(gpu_p, NUM_PARTICLES);
@@ -153,7 +153,7 @@ int main(void) {
     printf("GPU time      : %.4f sec\n", gpu_time);
     printf("Particles/sec : %.0f\n", (NUM_PARTICLES * NUM_STEPS) / gpu_time);
 
-    /*  Comparison  */
+    //compare
     printf("\n=== Comparison ===\n");
     printf("%-18s %12s %16s\n", "", "CPU", "GPU (OpenCL)");
     printf("%-18s %12.4fs %12.4fs\n", "Time:", cpu_time, gpu_time);
